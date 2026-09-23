@@ -2,7 +2,7 @@
 
 Sylvia Deng
 
-INSERT-YOUR-VIDEO-LINK (after completing this assignment)
+[Video Link](https://drive.google.com/file/d/1kW9NpHIoe7aV6TYz9wIqxPLGRhWobD7l/view?usp=sharing)
 
 ----
 ----
