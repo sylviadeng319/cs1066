@@ -1,0 +1,26 @@
+Q1:
+Yes
+
+Q2:
+input: -1
+should return: "not valid"
+unexpected return: 31
+
+Q3:
+Yes. pytest.mark.parametrize provides a simple way to repeat the same test for a list of input cases, so we do not need to write a separate test for each case.
+
+Q4:
+The AI did a good job categorizing the input space. It first tested cases where there were at least three matching cards, then cases without three matching cards, and finally cases where the number of cards was incorrect. I liked how it organized the tests in a logical way, from successful (normal) cases to failure and edge cases. The AI also used a variety of ranks in the test inputs, including "10" and letters.
+One part of the input space that wasn't covered in the suite was a hand with three matching cards and a pair. It would be better if we could make sure the program still finds the correct triplet in this case.
+
+Q5:
+It was a bit hard for me to generate a test suite for the function because I had to go through the function line by line to see where the code could possibly go run and what input would potentially return unexpected results. The AI did provide a good starting point for me.
+
+Q6:
+I was satisfied with the result because it effectively implemented the feature (the single joker) we wanted to add without making a big change to the original structure. It also automatically updated the test file and kept the old tests intact.
+I was surprised that it included a test to test "drop 3 prefers a natural triple over joker match," which was not specfied in my prompt. This sounds like a reasonable design choice to me, although it would be better if it communicates this more explicitly in its response.
+I would not have characterized the test space differently because the AI's way was already very organized and logical.
+
+Q7: 
+We used to test human-generated programs because humans can make mistakes when writing code. We may make a syntax mistake, miss an input check, or write a wrong logic. Testing helped us make sure the program is working, and working in the expected way.
+Although AI is very good at generating programs nowadays, we still need to ask AIs to build test suites because AIs cannot guarantee that their generated code is correct. They probably would not make syntax mistakes, but they may still miss edge cases or misunderstand our requirements. Generating the test suites helps us better understand the generated program and find these mistakes. 
