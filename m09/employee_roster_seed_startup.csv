@@ -1,0 +1,15 @@
+employee_id,employee_name,title,reports_to,location,comp_usd,bonus_ote_usd,equity_shares
+E001,Jane Smith,CEO & Co-Founder,Board,"San Francisco, CA",180000,,2500000
+E002,John Doe,CTO & Co-Founder,Board,"San Francisco, CA",175000,,2500000
+E003,Sarah Johnson,VP of Engineering,E001,"San Francisco, CA",200000,50000,150000
+E004,Mike Chen,Head of Product,E001,"New York, NY",185000,45000,125000
+E005,Emily Davis,Senior Engineer,E003,Remote,165000,25000,50000
+E006,Alex Wilson,Sales Director,E001,"New York, NY",140000,100000,75000
+E007,Lisa Brown,Marketing Manager,E001,"San Francisco, CA",130000,30000,40000
+E008,Tom Garcia,Software Engineer,E003,Remote,145000,20000,35000
+E009,Rachel Kim,Product Designer,E004,"San Francisco, CA",140000,20000,30000
+E010,David Lee,Account Executive,E006,"New York, NY",85000,85000,20000
+,,,,,,,
+Summary Statistics,,,,,,,
+Total Headcount,10,,,,,,
+Total Comp,1545000,,,,,,

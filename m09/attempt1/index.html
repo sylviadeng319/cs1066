@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>People Planning | Example AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href=".">EXAMPLE <span>AI</span></a>
+      <div class="context"><span class="status-dot"></span>People planning / 2026</div>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">Acquisition diligence / workforce scenario</p>
+      <h1>Build the team<br><em>that matters.</em></h1>
+      <p class="lede">Model a retained team from the current roster. People are ordered by annual base compensation, highest first.</p>
+    </section>
+
+    <section class="scenario" aria-labelledby="scenario-title">
+      <div class="scenario-head">
+        <div>
+          <p class="eyebrow">Scenario control</p>
+          <h2 id="scenario-title">Headcount to bring on</h2>
+        </div>
+        <output id="headcount-output" for="headcount">12 people</output>
+      </div>
+      <div class="slider-wrap">
+        <input id="headcount" type="range" min="1" max="166" value="12" step="1" aria-label="Number of people to bring on">
+        <div class="slider-labels"><span>1</span><span id="max-headcount">166</span></div>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Scenario summary">
+      <article class="metric metric-primary">
+        <p class="metric-label">Annual base compensation</p>
+        <strong id="total-cost">--</strong>
+        <span id="cost-note">Loading roster...</span>
+      </article>
+      <article class="metric">
+        <p class="metric-label">Average per person</p>
+        <strong id="average-cost">--</strong>
+        <span>Base compensation</span>
+      </article>
+      <article class="metric">
+        <p class="metric-label">Share of current roster</p>
+        <strong id="roster-share">--</strong>
+        <span id="roster-count">of 166 people</span>
+      </article>
+    </section>
+
+    <section class="roster-section" aria-labelledby="roster-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Selection by compensation</p>
+          <h2 id="roster-title">People in this scenario</h2>
+        </div>
+        <span class="sort-note">Highest base pay first <span aria-hidden="true">↓</span></span>
+      </div>
+      <div id="error" class="error" role="alert" hidden></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">#</th><th scope="col">Person</th><th scope="col">Role</th><th scope="col">Department</th><th scope="col">Base compensation</th></tr>
+          </thead>
+          <tbody id="roster-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>Source: employee_roster.csv <span>•</span> Base compensation only; equity and variable compensation excluded.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
