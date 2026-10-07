@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section id="splash" class="splash">
+    <div class="splash-panel">
+      <p class="eyebrow">A two-player race to five points</p>
+      <h1>Kings</h1>
+      <div class="rules-scroll">
+        <pre id="rules-text" class="rules"></pre>
+      </div>
+      <p class="ask">How would you like to play?</p>
+      <div class="mode-row">
+        <button type="button" class="mode-btn" data-vs-ai="true">
+          <span class="mode-title">Play against the AI</span>
+          <span class="mode-copy">Your hand, the stock, and the discard pile. The computer plays the other seat.</span>
+        </button>
+        <button type="button" class="mode-btn" data-vs-ai="false">
+          <span class="mode-title">Play both hands</span>
+          <span class="mode-copy">Both hands stay face-up. The active hand is marked when it is time to choose a pile.</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="table" class="table hidden">
+    <header class="table-top">
+      <h1 class="table-title">Kings</h1>
+      <p id="status" class="status"></p>
+      <button type="button" id="new-game" class="text-btn">New game</button>
+    </header>
+
+    <p id="ai-note" class="ai-note hidden"></p>
+
+    <div id="hand-player2" class="hand-area hidden" data-player="player2"></div>
+
+    <div class="piles">
+      <button type="button" id="stock" class="pile" aria-label="Stock pile">
+        <div class="pile-stack" id="stock-stack"></div>
+        <span class="pile-label">Stock</span>
+        <span id="stock-count" class="pile-count"></span>
+      </button>
+      <button type="button" id="discard-pile" class="pile" aria-label="Discard pile">
+        <div class="pile-stack" id="discard-stack"></div>
+        <span class="pile-label">Discard</span>
+      </button>
+    </div>
+
+    <div id="hand-player1" class="hand-area" data-player="player1"></div>
+  </section>
+
+  <div id="overlay" class="overlay hidden">
+    <div class="overlay-card">
+      <p class="crown">♔</p>
+      <h2 id="overlay-title">King</h2>
+      <p id="overlay-body"></p>
+      <div id="overlay-hands" class="overlay-hands"></div>
+      <button type="button" id="play-again" class="mode-btn overlay-btn">
+        <span class="mode-title">Play again</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
