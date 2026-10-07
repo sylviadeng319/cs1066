@@ -1,6 +1,6 @@
 ## My Lab Notebook for CS1066 PSet #4
 
-INSERT-YOUR-NAME
+Sylvia Deng
 
 INSERT-YOUR-VIDEO-LINK (after completing this assignment)
 
@@ -13,11 +13,16 @@ INSERT-YOUR-VIDEO-LINK (after completing this assignment)
 
 Text of my first prompt (copied from the pset directions):
 
-> INSERT-PROMPT-TEXT
+> The folder `m09/data_room` was prepared by a startup I'm looking to acquire. In it, focus on the `people` folder. In the directory `m09/pset4`, create an interactive app in Python using Streamlit that allows me to run scenarios on the number of people I can bring on. Use a Python virtual environment for any packages that need to be installed. The app should implement a slider that sets the total headcount number, and it should display the total cost (based on compensation) for a team of that size. Prioritize people by compensation.
 
 Reflections on success/failure of this prompt:
 
-*   WRITE-BULLET-LIST-OF-THOUGHTS
+*   The Streamlit app ran without any error.
+*   AI was able to figure out the packages needed for the virtual environment and created a requirements.txt file.
+*   It also implemented the slider as described in the prompt, and I was able to run scenarios smoothly.
+*   The prompt did not ask the AI to display an explicit list of employees, but the AI created a scrollable table to display the information of the employees under the selected scenario. I liked this design because it was clear and allowed me to ensure that people were prioritized by compensation.
+*   I also liked the little question mark icon the AI added, which lets users hover to see a note explaining how the displayed total compensation was calculated.
+*   In general, AI did a pretty good job.
 
 ----
 
