@@ -2,7 +2,7 @@
 
 Sylvia Deng
 
-INSERT-YOUR-VIDEO-LINK (after completing this assignment)
+[Video Link](https://harvard.zoom.us/rec/share/y1fE8_xagwN4hEQt6OQIsbPpKz8G4VlYhLJSm-rkDOUldKtu9sS9Zq3Dih1vI6qa.ZpHbLqFu6b7ZypdK)
 
 ----
 ----
@@ -127,8 +127,6 @@ As you see in `cn09`,
 
 3.  Add any description that helps others to use this refinement strategy.
 
-Tell the AI what the result must include and what it should do if the user's
-choices make that result impossible.
+Tell the AI what the result must include and what it should do if the user's choices make that result impossible.
 
-Being explicit about both the required outcome and the failure case helps the
-AI avoid silently ignoring a requirement or guessing how to resolve a conflict.
+Being explicit about both the required outcome and the failure case helps the AI avoid silently ignoring a requirement or guessing how to resolve a conflict.
