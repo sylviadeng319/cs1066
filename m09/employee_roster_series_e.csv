@@ -1,0 +1,57 @@
+id,employee_name,position,dept,manager_id,office_location,country,salary,currency,bonus_target_pct,rsu_grant_value,vesting_start_date,hire_date,employment_type,cost_center,is_exempt,email,phone,level,performance_rating
+E0001,María García-López,Chief Executive Officer,Executive,BOARD,San Francisco,USA,425000,USD,100,2500000,2019-03-15,2019-03-15,Full-Time,001-EXEC,Yes,maria@acmecorp.com,+1 (415) 555-0101,L10,Exceeds
+E0002,James O'Brien,Chief Technology Officer,Engineering,E0001,San Francisco,USA,400000,USD,75,2000000,2019-04-01,2019-04-01,Full-Time,002-ENG,Yes,james.obrien@acmecorp.com,415.555.0102,L10,Exceeds
+E0003,Priya Sharma,Chief Financial Officer,Finance,E0001,New York,USA,385000,USD,75,1800000,2020-01-10,2020-01-10,Full-Time,003-FIN,Y,priya@acmecorp.com,1-212-555-0103,L10,Meets
+E0004,张伟 (Wei Zhang),VP Engineering,Engineering,E0002,San Francisco,USA,320000,USD,50,800000,2020-06-15,2020-06-15,Full-Time,002-ENG,TRUE,wei.zhang@acmecorp.com,+14155550104,L9,Exceeds
+E0005,Sarah Mitchell,VP Product,Product,E0001,San Francisco,USA,310000,USD,50,750000,2020-08-01,2020-08-01,Full-Time,004-PROD,1,smitchell@acmecorp.com,(415) 555-0105,L9,Meets
+E0006,Björk Sigurdsson,VP Sales,Sales,E0001,New York,USA,280000,USD,100,600000,2021-01-15,2021-01-15,Full-Time,005-SALES,yes,bjork.s@acmecorp.com,212 555 0106,L9,Exceeds
+E0007,Michael Chen,VP Marketing,Marketing,E0001,San Francisco,USA,275000,USD,40,500000,2021-03-01,2021-03-01,Full-Time,006-MKT,Yes,m.chen@acmecorp.com,+1-415-555-0107,L9,Meets
+E0008,Emma Thompson,Engineering Director,Engineering,E0004,San Francisco,USA,280000,USD,35,400000,2021-02-15,2021-02-15,Full-Time,002-ENG,Yes,emma.t@acmecorp.com,4155550108,L8,Exceeds
+E0009,"Müller, Hans",Engineering Director,Engineering,E0004,Berlin,Germany,195000,EUR,30,350000,2021-05-01,2021-05-01,Full-Time,002-ENG-EU,N/A,hans.muller@acmecorp.de,+49 30 12345678,L8,Meets
+E0010,Aisha Patel,Director of Data Science,Engineering,E0004,San Francisco,USA,265000,USD,30,350000,2021-06-01,2021-06-01,Full-Time,002-ENG,Yes,aisha.p@acmecorp.com,(415) 555-0110,L8,Exceeds
+E0011,Carlos Rodríguez,Senior Staff Engineer,Engineering,E0008,San Francisco,USA,245000,USD,25,300000,2021-04-15,2021-04-15,Full-Time,002-ENG,Yes,carlos.r@acmecorp.com,+1 415 555 0111,L7,Meets
+E0012,Jennifer Lee,Staff Engineer,Engineering,E0008,San Francisco,USA,225000,USD,20,200000,2021-07-01,2021-07-01,Full-Time,002-ENG,Yes,jlee@acmecorp.com,415-555-0112,L6,Exceeds
+E0013,Thomas Andersson,Staff Engineer,Engineering,E0009,Berlin,Germany,145000,EUR,20,180000,2021-09-01,2021-09-01,Full-Time,002-ENG-EU,N/A,t.andersson@acmecorp.de,+49-30-87654321,L6,Meets
+E0014,Sophie Dubois,Senior Engineer,Engineering,E0008,Remote,France,130000,EUR,15,120000,2022-01-10,2022-01-10,Full-Time,002-ENG-EU,N/A,sophie.d@acmecorp.com,+33 1 23 45 67 89,L5,Needs Improvement
+E0015,Ryan Johnson,Senior Engineer,Engineering,E0008,San Francisco,USA,195000,USD,15,150000,2022-02-01,2022-02-01,Full-Time,002-ENG,Yes,ryan.j@acmecorp.com,415.555.0115,L5,Meets
+E0016,田中花子 (Hanako Tanaka),Senior Engineer,Engineering,E0010,Tokyo,Japan,18500000,JPY,15,12000000,2022-04-01,2022-04-01,Full-Time,002-ENG-APAC,N/A,hanako.t@acmecorp.co.jp,+81-3-1234-5678,L5,Exceeds
+E0017,David Kim,Engineer II,Engineering,E0012,San Francisco,USA,175000,USD,10,100000,2022-06-15,2022-06-15,Full-Time,002-ENG,Yes,dkim@acmecorp.com,(415)555-0117,L4,Meets
+E0018,Amanda Foster,Engineer II,Engineering,E0011,Remote,USA,170000,USD,10,100000,2022-07-01,2022-07-01,Full-Time,002-ENG,Yes,a.foster@acmecorp.com,555-0118,L4,Meets
+E0019,Mohammed Al-Hassan,Engineer I,Engineering,E0012,San Francisco,USA,145000,USD,10,75000,2023-01-15,2023-01-15,Full-Time,002-ENG,Yes,m.alhassan@acmecorp.com,+1 (415) 555-0119,L3,Meets
+E0020,Lisa Wang,Engineer I,Engineering,E0013,Berlin,Germany,85000,EUR,10,60000,2023-03-01,2023-03-01,Full-Time,002-ENG-EU,N/A,l.wang@acmecorp.de,+49 151 12345678,L3,Exceeds
+E0021,Kevin O'Sullivan,Senior Product Manager,Product,E0005,San Francisco,USA,210000,USD,25,180000,2021-08-15,2021-08-15,Full-Time,004-PROD,Yes,kevin.os@acmecorp.com,415 555 0121,L6,Meets
+E0022,Rachel Green ,Product Manager,Product,E0021,New York,USA,175000,USD,20,120000,2022-03-01,2022-03-01,Full-Time,004-PROD,Yes, rachel.g@acmecorp.com,212-555-0122,L5,Meets
+E0023, Alex Petrov,Associate PM,Product,E0021,Remote,USA,140000,USD,15,80000,2023-02-01,2023-02-01,Full-Time,004-PROD,Yes,alex.p@acmecorp.com ,+1-555-0123,L4,Needs Improvement
+E0024,Nicole Brennan,Sales Director,Sales,E0006,New York,USA,185000,USD,100,200000,2021-05-01,2021-05-01,Full-Time,005-SALES,Yes,n.brennan@acmecorp.com,212.555.0124,L7,Exceeds
+E0025,Marcus Williams,Enterprise AE,Sales,E0024,New York,USA,150000,USD,100,100000,2021-09-15,2021-09-15,Full-Time,005-SALES,No,marcus.w@acmecorp.com,+1 212 555 0125,L5,Exceeds
+E0026,Olivia Martinez,Enterprise AE,Sales,E0024,Chicago,USA,145000,USD,100,100000,2022-01-10,2022-01-10,Full-Time,005-SALES,No,o.martinez@acmecorp.com,(312) 555-0126,L5,Meets
+E0027,Patrick Dempsey,Mid-Market AE,Sales,E0024,New York,USA,120000,USD,80,60000,2022-05-01,2022-05-01,Full-Time,005-SALES,No,pdempsey@acmecorp.com,212-555-0127,L4,Meets
+E0028,Samantha Clarke,SDR Manager,Sales,E0006,New York,USA,130000,USD,50,80000,2022-02-15,2022-02-15,Full-Time,005-SALES,Yes,s.clarke@acmecorp.com,212 555 0128,L5,Exceeds
+E0029,Tyler Brooks,SDR,Sales,E0028,New York,USA,65000,USD,40,25000,2023-01-05,2023-01-05,Full-Time,005-SALES,No,tyler.b@acmecorp.com,+1-212-555-0129,L2,Meets
+E0030,Isabella Rossi,SDR,Sales,E0028,Remote,USA,62000,USD,40,25000,2023-04-15,2023-04-15,Full-Time,005-SALES,FALSE,i.rossi@acmecorp.com,555-0130,L2,Meets
+E0031,Christopher Nolan,Marketing Director,Marketing,E0007,San Francisco,USA,195000,USD,30,150000,2021-06-01,2021-06-01,Full-Time,006-MKT,Yes,c.nolan@acmecorp.com,(415) 555-0131,L7,Meets
+E0032,Jessica Adams,Content Marketing Mgr,Marketing,E0031,San Francisco,USA,145000,USD,20,80000,2022-01-15,2022-01-15,Full-Time,006-MKT,Yes,j.adams@acmecorp.com,415-555-0132,L5,Exceeds
+E0033,Daniel Park,Demand Gen Manager,Marketing,E0031,San Francisco,USA,155000,USD,25,90000,2022-03-01,2022-03-01,Full-Time,006-MKT,Yes,d.park@acmecorp.com,415.555.0133,L5,Meets
+E0034,Emily Watson,Marketing Coordinator,Marketing,E0032,Remote,USA,75000,USD,10,30000,2023-02-15,2023-02-15,Full-Time,006-MKT,No,e.watson@acmecorp.com,555-0134,L2,Meets
+E0035,Nathan Scott,Controller,Finance,E0003,New York,USA,195000,USD,25,150000,2021-03-01,2021-03-01,Full-Time,003-FIN,Yes,n.scott@acmecorp.com,212-555-0135,L6,Meets
+E0036,Michelle Torres,Senior Accountant,Finance,E0035,New York,USA,125000,USD,15,60000,2021-11-01,2021-11-01,Full-Time,003-FIN,Yes,m.torres@acmecorp.com,(212) 555-0136,L4,Meets
+E0037,Andrew Phillips,FP&A Manager,Finance,E0003,New York,USA,165000,USD,20,100000,2022-02-01,2022-02-01,Full-Time,003-FIN,Yes,a.phillips@acmecorp.com,212 555 0137,L5,Exceeds
+E0038,Laura Bennett,Accountant,Finance,E0035,Remote,USA,95000,USD,10,40000,2022-08-15,2022-08-15,Full-Time,003-FIN,Yes,l.bennett@acmecorp.com,+1-555-0138,L3,Meets
+E0039,Robert Hayes,VP People,People,E0001,San Francisco,USA,265000,USD,40,400000,2021-04-01,2021-04-01,Full-Time,007-PPL,Yes,r.hayes@acmecorp.com,415-555-0139,L9,Meets
+E0040,Catherine Bell,HR Business Partner,People,E0039,San Francisco,USA,145000,USD,15,80000,2021-10-01,2021-10-01,Full-Time,007-PPL,Yes,c.bell@acmecorp.com,(415) 555-0140,L5,Meets
+E0041,Jason Wright,Recruiter,People,E0039,San Francisco,USA,115000,USD,15,50000,2022-04-15,2022-04-15,Full-Time,007-PPL,No,j.wright@acmecorp.com,415.555.0141,L4,Meets
+E0042,Stephanie Cruz,Recruiting Coordinator,People,E0041,Remote,USA,70000,USD,10,25000,2023-03-01,2023-03-01,Full-Time,007-PPL,No,s.cruz@acmecorp.com,555-0142,L2,
+E0043,George Miller,IT Manager,IT,E0002,San Francisco,USA,165000,USD,20,100000,2021-07-15,2021-07-15,Full-Time,008-IT,Yes,g.miller@acmecorp.com,415 555 0143,L5,Meets
+E0044,Anna Kowalski,IT Support Specialist,IT,E0043,San Francisco,USA,95000,USD,10,40000,2022-06-01,2022-06-01,Full-Time,008-IT,No,a.kowalski@acmecorp.com,+1 (415) 555-0144,L3,Meets
+E0045,Brian Cooper,Security Engineer,IT,E0043,San Francisco,USA,185000,USD,15,120000,2022-01-05,2022-01-05,Full-Time,008-IT,Yes,b.cooper@acmecorp.com,415-555-0145,L5,Exceeds
+E0046,Victoria Singh,General Counsel,Legal,E0001,San Francisco,USA,295000,USD,40,350000,2021-08-01,2021-08-01,Full-Time,009-LEGAL,Yes,v.singh@acmecorp.com,(415) 555-0146,L8,Meets
+E0047,Jonathan Blake,Corporate Counsel,Legal,E0046,San Francisco,USA,215000,USD,25,150000,2022-05-15,2022-05-15,Full-Time,009-LEGAL,Yes,j.blake@acmecorp.com,415.555.0147,L6,Meets
+E0048,Intern_Summer2024,Engineering Intern,Engineering,E0012,San Francisco,USA,TBD - hourly,USD,,,,2024-06-01,Intern,002-ENG,No,intern1@acmecorp.com,,L0,
+E0049,Megan Foster,Customer Success Mgr,Customer Success,E0006,New York,USA,135000,USD,30,70000,2022-02-01,2022-02-01,Full-Time,010-CS,Yes,m.foster@acmecorp.com,212-555-0149,L5,Meets
+E0050,Derek Howard,CS Associate,Customer Success,E0049,Remote,USA,85000,USD,20,35000,2023-01-10,2023-01-10,Full-Time,010-CS,No,d.howard@acmecorp.com,+1-555-0150,L3,Meets
+,,,,,,,,,,,,,,,,,,,
+Summary Statistics,,,,,,,,,,,,,,,,,,,
+Total Headcount,50,,,,,,,,,,,,,,,,,,
+Avg Base (USD),~175000,,,,,,,,,,,,,,,,,,
+Total RSU Value,~15M,,,,,,,,,,,,,,,,,,
+Last Updated,2024-01-15,,,,,,,,,,,,,,,,,,
