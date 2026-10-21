@@ -1,0 +1,21 @@
+name,email,registration_type,phone,check_in_time,survey_score
+Daniel Kim,daniel_kim@example.org,Professional,6175550108,09:07,3
+Grace Okafor,grace.okafor@example.org,Professional,6175550106,09:04,5
+Linh Tran,hilbert@example.org,Student,617-555-0107,08:50,4
+Avery Chen,achen@example.org,Standard,617-555-0147,09:12,5
+Fatima Ali,fatimaa@example.org,Student,617-555-0116,08:39,5
+Ethan Patel,ethan.patel@example.org,Professional,6175550112,08:52,5
+Mia Nguyen,nguyen23@example.org,Student,617-555-0105,08:58,5
+Ravi Shah,rshah44@example.org,Student,617-555-0117,09:18,5
+Sofia Rossi,serossi@example.org,Standard,617-555-0111,09:10,4
+Alice Chen,alicec@example.org,Standard,617-555-0148,09:13,
+Miguel Santos,miguel.santos@example.org,Standard,6175550103,08:36,5
+Omar Haddad,omar.haddad@example.org,Professional,+1 (617) 555-0113,08:47,4
+Elena Petrova,elena.petrova@example.org,Professional,617-555-0115,09:15,
+Ben Carter,bcarter@example.org,Professional,6175550109,09:22,3
+Hannah Brooks,hannah.brooks@example.org,Student,617-555-0102,08:42,4
+Noah Williams,noah.williams@example.org,Professional,6175550110,08:46,4
+Zoe Martin,zoe.martin@example.org,Student,6175550104,08:55,3
+Lucas Silva,lucas_silva@example.org,Standard,617-555-0118,09:01,4
+Chloe Martin,chloemar@example.org,Standard,6175550119,09:26,
+Priya Nair,priya.nair@example.org,Student,617.555.0101,08:31,4
