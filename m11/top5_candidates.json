@@ -1,0 +1,61 @@
+{
+  "retrieval_id": 1,
+  "generated_at_utc": "2026-10-22T05:05:17.079483+00:00",
+  "criteria": {
+    "pl_rade": {
+      "minimum": 1.5,
+      "maximum": 7.5
+    },
+    "pl_orbper": {
+      "minimum": 0.1,
+      "maximum": 20.0
+    },
+    "pl_eqt": {
+      "minimum": 150.0,
+      "maximum": 607.0
+    }
+  },
+  "ranking": "Sum of squared distances from each range midpoint, normalized by half that range's width; lower scores rank higher.",
+  "results": [
+    {
+      "planet_name": "K2-18 c",
+      "host_star": "K2-18",
+      "pl_rade": 2.65,
+      "pl_orbper": 8.962,
+      "pl_eqt": 363.0,
+      "ranking_score": 0.39683589653022444
+    },
+    {
+      "planet_name": "GJ 1132 c",
+      "host_star": "GJ 1132",
+      "pl_rade": 1.52,
+      "pl_orbper": 8.929,
+      "pl_eqt": 300.0,
+      "ranking_score": 1.1174272033134445
+    },
+    {
+      "planet_name": "K2-285 e",
+      "host_star": "K2-285",
+      "pl_rade": 1.95,
+      "pl_orbper": 14.76289,
+      "pl_eqt": 500.9,
+      "ranking_score": 1.2337907841933384
+    },
+    {
+      "planet_name": "GJ 3470 b",
+      "host_star": "GJ 3470",
+      "pl_rade": 4.57,
+      "pl_orbper": 3.3366496,
+      "pl_eqt": 593.5,
+      "ranking_score": 1.3411047508667635
+    },
+    {
+      "planet_name": "GJ 1214 b",
+      "host_star": "GJ 1214",
+      "pl_rade": 2.733,
+      "pl_orbper": 1.580404531,
+      "pl_eqt": 567.0,
+      "ranking_score": 1.7520237806974515
+    }
+  ]
+}
