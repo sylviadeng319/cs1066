@@ -1,0 +1,39 @@
+{
+  "retrieved_at_utc": "2026-10-22T04:30:36.310553+00:00",
+  "source_table": "pscomppars",
+  "query": "SELECT TOP 101 pl_name, hostname, pl_rade, pl_rade_reflink, pl_bmasse, pl_bmasse_reflink, pl_orbper, pl_orbper_reflink, pl_eqt, pl_eqt_reflink, sy_vmag, sy_vmag_reflink, st_teff, st_teff_reflink, sy_dist, sy_dist_reflink, ra, ra_reflink, dec, discoverymethod, disc_facility, disc_refname, tran_flag FROM pscomppars ORDER BY pl_name",
+  "selected_fields": [
+    "pl_name",
+    "hostname",
+    "pl_rade",
+    "pl_rade_reflink",
+    "pl_bmasse",
+    "pl_bmasse_reflink",
+    "pl_orbper",
+    "pl_orbper_reflink",
+    "pl_eqt",
+    "pl_eqt_reflink",
+    "sy_vmag",
+    "sy_vmag_reflink",
+    "st_teff",
+    "st_teff_reflink",
+    "sy_dist",
+    "sy_dist_reflink",
+    "ra",
+    "ra_reflink",
+    "dec",
+    "discoverymethod",
+    "disc_facility",
+    "disc_refname",
+    "tran_flag"
+  ],
+  "response_hash": {
+    "algorithm": "SHA-256",
+    "value": "2794ef411a41beb985904359f21a81d3091b09e65d3912201f4705f44a485a7f",
+    "input": "raw HTTP response body bytes"
+  },
+  "transformations": [
+    "Parsed the Archive's JSON response into JSON records.",
+    "Re-serialized the records as UTF-8 JSON with two-space indentation and a trailing newline; field values were not otherwise changed."
+  ]
+}
