@@ -44,6 +44,19 @@ How the AI's response to this prompt helped my thinking (or not):
 
 Text of my next prompt:
 
+> The Princeton query returned Princeton recaps near the top for both methods, so it does not clearly show BM-25's top choice is better. Find and test a query whose results make that distinction visible; don't use the difference in raw scores as proof, since the score scales differ.
+
+How the AI's response to this prompt helped my thinking (or not):
+
+*   This time I tested a detail from a specific recap rather than asking generally for an “upset”: “The Crimson made quick work of the Lions and built a lead by driving the margin up.”
+*   BM-25 ranked **Harvard Turns an Early Deficit into a 20-Point Win** first. That recap describes Harvard's 75-55 win over Columbia, including a lead that grew to 22.
+*   TF-IDF ranked losses to Dartmouth and Yale first, rather than that Columbia win. For this query, BM-25's top result was the better match to the game I had in mind.
+*   I learned to judge this comparison by the relevance of the top results, not by comparing BM-25's and TF-IDF's raw scores. This was a stronger example than my first Princeton attempt because the two methods actually led me to different games.
+
+----
+
+Text of my next prompt:
+
 > Give me a query where both methods should find the California recap, but do not make it too obviously the same as the title.
 
 How the AI's response to this prompt helped my thinking (or not):
@@ -74,8 +87,8 @@ How the AI's response to this prompt moved your work forward (or not):
 
 *   The response clarified the goal for me, which is to keep the same game story recognizable while changing the wording enough that exact word overlap is less helpful.
 *   It made me think about the difference between rewriting a recap and writing a paraphrased search query.
-*   I used a generated set of future recaps for my search tests, rather than documenting a rewrite of one existing recap here. So the response helped me understand the intended approach.
-*   That distinction changed how I interpret my semantic-search result. It is a useful trial but not by itself proof.
+*   I chose the existing Columbia recap about Harvard's 75-55 win and rewrote it as semantic-rewrite-columbia.md. I kept the key scoring sequence but changed the article's wording.
+*   Doing the rewrite made the task more concrete. I had to preserve what happened in the game while making the recap sound different, rather than just inventing a search query.
 
 ----
 
@@ -88,7 +101,7 @@ How the AI's response to this prompt moved your work forward (or not):
 *   The response gave me a descriptive query to try: “A resilient Harvard team used a late defensive stand and a flurry of clutch shots to erase a halftime deficit and beat a tough California squad on the road.”
 *   Semantic search ranked the California recap first, which was encouraging and gave me a concrete result to inspect.
 *   My query still names Harvard and California and mentions a road game. Those clues may have helped, so this is not a clean demonstration that the search relied only on meaning.
-*   The run helped me see how I could make the test stronger: remove the names and obvious matchup details, then see whether the intended recap still ranks first.
+*   The first query was also too generic. It ranked several unrelated future recaps describing a late push. I needed a query tied more closely to the rewritten article's particular sequence of events.
 
 ----
 
@@ -99,6 +112,18 @@ Text of my next prompt:
 How the AI's response to this prompt moved your work forward (or not):
 
 *   The response helped me focus on describing the game's events rather than just repeating its title.
-*   I wanted the query to sound like something a person might say when recalling a game. The suggested wording gave me a starting point, although I still needed to judge whether it avoided too many identifying terms.
-*   The California result was easy to explain, but the query retained the team names and road setting.
-*   This made me realize that a convincing test needs both a meaningful paraphrase and a check that the paraphrase does not give away the answer through names or other obvious keywords.
+*   It led me back to the California query, which did find the California recap first, but it still included the team names and the road setting. Those terms made the result less convincing as a semantic-only match.
+*   I learned that changing the wording of a title is not enough if the query still gives away the matchup. I needed to remove those clues and test a different, rewritten recap.
+
+----
+
+Text of my next prompt:
+
+> Choose and rewrite a recap, then test a query with no obvious shared matchup terms.
+
+How the AI's response to this prompt moved your work forward (or not):
+
+*   I rewrote the Columbia recap and tried: “21 in succession changed 22-15 to 36-22 at intermission; the other side narrowed things to 43-41, yet subsequent figures were 70-48 and 75-55.”
+*   This time the rewritten file, Harvard Turns an Early Deficit into a 20-Point Win, ranked first in semantic search (0.395). The next results were other recaps with scores of 0.3345 and 0.3331.
+*   The query shares the score figures with the recap, but not its nontrivial wording. It describes the same run of events in different language, which makes this a better semantic example than the California query.
+*   Comparing the matching passage with the query helped me explain the result. Both describe the shift from a 22-15 deficit to a 36-22 halftime lead, the opponent closing the gap to 43-41, and Harvard pulling away to win 75-55.
