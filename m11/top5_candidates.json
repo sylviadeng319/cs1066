@@ -1,10 +1,11 @@
 {
+  "list_id": 4,
   "retrieval_id": 1,
-  "generated_at_utc": "2026-10-22T05:05:17.079483+00:00",
+  "generated_at_utc": "2026-10-22T19:10:13.453263+00:00",
   "criteria": {
     "pl_rade": {
-      "minimum": 1.5,
-      "maximum": 7.5
+      "minimum": 0.5,
+      "maximum": 2.5
     },
     "pl_orbper": {
       "minimum": 0.1,
@@ -12,26 +13,37 @@
     },
     "pl_eqt": {
       "minimum": 150.0,
-      "maximum": 607.0
+      "maximum": 600.0
     }
   },
   "ranking": "Sum of squared distances from each range midpoint, normalized by half that range's width; lower scores rank higher.",
+  "notes": "",
+  "decision": "",
+  "follow_up_status": "not started",
   "results": [
-    {
-      "planet_name": "K2-18 c",
-      "host_star": "K2-18",
-      "pl_rade": 2.65,
-      "pl_orbper": 8.962,
-      "pl_eqt": 363.0,
-      "ranking_score": 0.39683589653022444
-    },
     {
       "planet_name": "GJ 1132 c",
       "host_star": "GJ 1132",
       "pl_rade": 1.52,
       "pl_orbper": 8.929,
       "pl_eqt": 300.0,
-      "ranking_score": 1.1174272033134445
+      "ranking_score": 0.12420413401457316
+    },
+    {
+      "planet_name": "LHS 1140 c",
+      "host_star": "LHS 1140",
+      "pl_rade": 1.272,
+      "pl_orbper": 3.77794,
+      "pl_eqt": 422.0,
+      "ranking_score": 0.4929695099845154
+    },
+    {
+      "planet_name": "TRAPPIST-1 f",
+      "host_star": "TRAPPIST-1",
+      "pl_rade": 1.045,
+      "pl_orbper": 9.20754,
+      "pl_eqt": 217.7,
+      "ranking_score": 0.7029502439553186
     },
     {
       "planet_name": "K2-285 e",
@@ -39,23 +51,15 @@
       "pl_rade": 1.95,
       "pl_orbper": 14.76289,
       "pl_eqt": 500.9,
-      "ranking_score": 1.2337907841933384
+      "ranking_score": 0.7399536447433643
     },
     {
-      "planet_name": "GJ 3470 b",
-      "host_star": "GJ 3470",
-      "pl_rade": 4.57,
-      "pl_orbper": 3.3366496,
-      "pl_eqt": 593.5,
-      "ranking_score": 1.3411047508667635
-    },
-    {
-      "planet_name": "GJ 1214 b",
-      "host_star": "GJ 1214",
-      "pl_rade": 2.733,
-      "pl_orbper": 1.580404531,
-      "pl_eqt": 567.0,
-      "ranking_score": 1.7520237806974515
+      "planet_name": "TRAPPIST-1 c",
+      "host_star": "TRAPPIST-1",
+      "pl_rade": 1.097,
+      "pl_orbper": 2.421937,
+      "pl_eqt": 339.7,
+      "ranking_score": 0.7747592425645806
     }
   ]
 }

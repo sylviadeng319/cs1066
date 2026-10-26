@@ -34,6 +34,8 @@ FIELDS = (
     "tran_flag",
 )
 
+DEFAULT_DATABASE = Path(__file__).with_name("exoplanets_with_candidates.db")
+
 SCHEMA = """
 PRAGMA foreign_keys = ON;
 
@@ -127,6 +129,53 @@ CREATE INDEX IF NOT EXISTS idx_star_observations_star_id
     ON star_observations(star_id);
 """
 
+CANDIDATE_LIST_SCHEMA = """
+CREATE TABLE IF NOT EXISTS candidate_lists (
+    list_id INTEGER PRIMARY KEY,
+    retrieval_id INTEGER NOT NULL REFERENCES retrievals(retrieval_id),
+    generated_at_utc TEXT NOT NULL,
+    source TEXT NOT NULL,
+    criteria_json TEXT NOT NULL,
+    ranking_description TEXT NOT NULL,
+    notes TEXT NOT NULL,
+    decision TEXT NOT NULL,
+    follow_up_status TEXT NOT NULL
+        CHECK (follow_up_status IN (
+            'not recorded', 'not started', 'in progress', 'complete'
+        ))
+);
+
+CREATE TABLE IF NOT EXISTS candidate_list_items (
+    list_id INTEGER NOT NULL REFERENCES candidate_lists(list_id)
+        ON DELETE CASCADE,
+    rank INTEGER NOT NULL CHECK (rank > 0),
+    planet_id INTEGER NOT NULL REFERENCES planets(planet_id),
+    planet_name TEXT NOT NULL,
+    host_star TEXT NOT NULL,
+    pl_rade REAL,
+    pl_orbper REAL,
+    pl_eqt REAL,
+    ranking_score REAL NOT NULL,
+    PRIMARY KEY (list_id, rank),
+    UNIQUE (list_id, planet_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_candidate_lists_retrieval_id
+    ON candidate_lists(retrieval_id);
+
+CREATE TABLE IF NOT EXISTS candidate_item_reviews (
+    list_id INTEGER NOT NULL,
+    rank INTEGER NOT NULL,
+    decision TEXT NOT NULL CHECK (decision IN ('selected', 'rejected')),
+    rationale TEXT NOT NULL,
+    reviewed_at_utc TEXT NOT NULL,
+    PRIMARY KEY (list_id, rank),
+    FOREIGN KEY (list_id, rank)
+        REFERENCES candidate_list_items(list_id, rank) ON DELETE CASCADE
+);
+"""
+
+
 def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Load exoplanet JSON data and metadata into SQLite."
@@ -145,8 +194,8 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--database",
         type=Path,
-        default=Path(__file__).with_name("exoplanets.db"),
-        help="SQLite database path (default: m11/exoplanets.db)",
+        default=DEFAULT_DATABASE,
+        help=f"SQLite database path (default: {DEFAULT_DATABASE})",
     )
     return parser.parse_args()
 
@@ -346,7 +395,7 @@ def main() -> int:
 
         args.database.parent.mkdir(parents=True, exist_ok=True)
         with sqlite3.connect(args.database) as connection:
-            connection.executescript(SCHEMA)
+            connection.executescript(SCHEMA + CANDIDATE_LIST_SCHEMA)
             added = load_retrieval(connection, rows, metadata)
     except (OSError, json.JSONDecodeError, sqlite3.Error, ValueError) as error:
         print(f"Could not load retrieval into SQLite: {error}", file=sys.stderr)

@@ -13,8 +13,9 @@ from typing import Any
 from urllib.parse import parse_qs
 
 
-DEFAULT_DATABASE = Path(__file__).with_name("exoplanets.db")
+DEFAULT_DATABASE = Path(__file__).with_name("exoplanets_with_candidates.db")
 DEFAULT_OUTPUT = Path(__file__).with_name("top5_candidates.json")
+FOLLOW_UP_STATUSES = ("not recorded", "not started", "in progress", "complete")
 FIELDS = {
     "pl_rade": ("Planet radius (Earth radii)", "Earth radii"),
     "pl_orbper": ("Orbital period (days)", "days"),
@@ -134,10 +135,84 @@ def search_candidates(
     return retrieval_id, candidates[:limit]
 
 
+def save_candidate_list(
+    database_path: Path,
+    retrieval_id: int,
+    ranges: dict[str, tuple[float, float]],
+    candidates: list[dict[str, Any]],
+    generated_at: str,
+    notes: str,
+    decision: str,
+    follow_up_status: str,
+) -> int:
+    with sqlite3.connect(database_path) as connection:
+        connection.row_factory = sqlite3.Row
+        cursor = connection.execute(
+            """
+            INSERT INTO candidate_lists (
+                retrieval_id, generated_at_utc, source, criteria_json,
+                ranking_description, notes, decision, follow_up_status
+            )
+            VALUES (?, ?, 'browser search', ?, ?, ?, ?, ?)
+            """,
+            (
+                retrieval_id,
+                generated_at,
+                json.dumps(
+                    {
+                        field_name: {"minimum": bounds[0], "maximum": bounds[1]}
+                        for field_name, bounds in ranges.items()
+                    },
+                    sort_keys=True,
+                ),
+                RANKING_DESCRIPTION,
+                notes,
+                decision,
+                follow_up_status,
+            ),
+        )
+        list_id = int(cursor.lastrowid)
+        for rank, candidate in enumerate(candidates, start=1):
+            planet = connection.execute(
+                "SELECT planet_id FROM planets WHERE pl_name = ?",
+                (candidate["planet_name"],),
+            ).fetchone()
+            if planet is None:
+                raise sqlite3.IntegrityError(
+                    f"Candidate planet {candidate['planet_name']!r} "
+                    "is not present in the database."
+                )
+            connection.execute(
+                """
+                INSERT INTO candidate_list_items (
+                    list_id, rank, planet_id, planet_name, host_star,
+                    pl_rade, pl_orbper, pl_eqt, ranking_score
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    list_id,
+                    rank,
+                    planet["planet_id"],
+                    candidate["planet_name"],
+                    candidate["host_star"],
+                    candidate["pl_rade"],
+                    candidate["pl_orbper"],
+                    candidate["pl_eqt"],
+                    candidate["ranking_score"],
+                ),
+            )
+    return list_id
+
+
 def render_page(
     ranges: dict[str, tuple[float, float]] | None = None,
     candidates: list[dict[str, Any]] | None = None,
     message: str | None = None,
+    notes: str = "",
+    decision: str = "",
+    follow_up_status: str = "not started",
+    list_id: int | None = None,
 ) -> str:
     ranges = ranges or {
         "pl_rade": (0.5, 2.5),
@@ -191,8 +266,14 @@ def render_page(
             )
             results_html = f"""
             <h2>Top {len(candidates)} candidate(s)</h2>
+            <p>Saved as candidate list {list_id} with follow-up status
+            <strong>{html.escape(follow_up_status)}</strong>.</p>
             <h3>Search ranges</h3>
             <ul>{range_summary}</ul>
+            <h3>Team notes and decision</h3>
+            <p><strong>Notes:</strong> {html.escape(notes) or "None recorded."}</p>
+            <p><strong>Decision:</strong>
+            {html.escape(decision) or "None recorded."}</p>
             <p>A lower score means the planet's measurements are closer to the
             midpoint of the selected ranges.</p>
             <div class="table-wrap"><table>
@@ -208,6 +289,11 @@ def render_page(
             results_html = f"""
             <h2>Search ranges</h2>
             <ul>{range_summary}</ul>
+            <p>Saved as candidate list {list_id} with follow-up status
+            <strong>{html.escape(follow_up_status)}</strong>.</p>
+            <p><strong>Notes:</strong> {html.escape(notes) or "None recorded."}</p>
+            <p><strong>Decision:</strong>
+            {html.escape(decision) or "None recorded."}</p>
             <p>No planets matched all three ranges.</p>
             """
 
@@ -240,6 +326,25 @@ def render_page(
       {notice}
       <form method="post">
         {''.join(form_fields)}
+        <fieldset>
+          <legend>List provenance and follow-up</legend>
+          <label>Notes
+            <textarea name="list_notes" rows="3" maxlength="5000">{html.escape(notes)}</textarea>
+          </label>
+          <label>Decision
+            <textarea name="list_decision" rows="3" maxlength="5000">{html.escape(decision)}</textarea>
+          </label>
+          <label>Follow-up status
+            <select name="follow_up_status">
+              {''.join(
+                  f'<option value="{status}"'
+                  f'{" selected" if follow_up_status == status else ""}>'
+                  f'{status.title()}</option>'
+                  for status in FOLLOW_UP_STATUSES
+              )}
+            </select>
+          </label>
+        </fieldset>
         <button type="submit">Find top five candidates</button>
       </form>
       {results_html}
@@ -269,6 +374,10 @@ class CandidateRequestHandler(BaseHTTPRequestHandler):
         if self.path != "/":
             self.send_error(404, "Page not found")
             return
+        ranges = None
+        notes = ""
+        decision = ""
+        follow_up_status = "not started"
         try:
             content_length = int(self.headers.get("Content-Length", "0"))
             if content_length > 16_384:
@@ -276,11 +385,30 @@ class CandidateRequestHandler(BaseHTTPRequestHandler):
             form = parse_qs(
                 self.rfile.read(content_length).decode("utf-8"),
                 strict_parsing=True,
+                keep_blank_values=True,
             )
             ranges = parse_ranges(form)
+            notes = form.get("list_notes", [""])[0].strip()
+            decision = form.get("list_decision", [""])[0].strip()
+            follow_up_status = form.get("follow_up_status", ["not started"])[0]
+            if len(notes) > 5000 or len(decision) > 5000:
+                raise ValueError("Notes and decisions must be 5,000 characters or fewer.")
+            if follow_up_status not in FOLLOW_UP_STATUSES:
+                raise ValueError("Choose a valid follow-up status.")
             retrieval_id, candidates = search_candidates(self.database_path, ranges)
             saved_at = datetime.now(timezone.utc).isoformat()
+            list_id = save_candidate_list(
+                self.database_path,
+                retrieval_id,
+                ranges,
+                candidates,
+                saved_at,
+                notes,
+                decision,
+                follow_up_status,
+            )
             output = {
+                "list_id": list_id,
                 "retrieval_id": retrieval_id,
                 "generated_at_utc": saved_at,
                 "criteria": {
@@ -288,24 +416,57 @@ class CandidateRequestHandler(BaseHTTPRequestHandler):
                     for field_name, bounds in ranges.items()
                 },
                 "ranking": RANKING_DESCRIPTION,
+                "notes": notes,
+                "decision": decision,
+                "follow_up_status": follow_up_status,
                 "results": candidates,
             }
-            self.output_path.parent.mkdir(parents=True, exist_ok=True)
-            with self.output_path.open("w", encoding="utf-8") as output_file:
-                json.dump(output, output_file, indent=2, ensure_ascii=False)
-                output_file.write("\n")
+            try:
+                self.output_path.parent.mkdir(parents=True, exist_ok=True)
+                with self.output_path.open("w", encoding="utf-8") as output_file:
+                    json.dump(output, output_file, indent=2, ensure_ascii=False)
+                    output_file.write("\n")
+            except OSError as error:
+                raise OSError(
+                    f"Candidate list {list_id} was saved to SQLite, but its JSON "
+                    f"file could not be written: {error}"
+                ) from error
         except (UnicodeDecodeError, ValueError) as error:
-            ranges_if_valid = locals().get("ranges")
             self.send_html(
                 400,
-                render_page(ranges_if_valid, message=str(error)),
+                render_page(
+                    ranges,
+                    message=str(error),
+                    notes=notes,
+                    decision=decision,
+                    follow_up_status=follow_up_status,
+                ),
             )
             return
         except (OSError, sqlite3.Error) as error:
-            self.send_html(500, render_page(message=f"Could not create results: {error}"))
+            self.send_html(
+                500,
+                render_page(
+                    ranges,
+                    message=f"Could not create results: {error}",
+                    notes=notes,
+                    decision=decision,
+                    follow_up_status=follow_up_status,
+                ),
+            )
             return
 
-        self.send_html(200, render_page(ranges, candidates))
+        self.send_html(
+            200,
+            render_page(
+                ranges,
+                candidates,
+                notes=notes,
+                decision=decision,
+                follow_up_status=follow_up_status,
+                list_id=list_id,
+            ),
+        )
 
     def log_message(self, format_string: str, *args: Any) -> None:
         print(f"{self.address_string()} - {format_string % args}", file=sys.stderr)
