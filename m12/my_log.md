@@ -2,7 +2,7 @@
 
 Sylvia Deng
 
-INSERT-YOUR-VIDEO-LINK (after completing this assignment)
+VIDEO-LINK: https://harvard.zoom.us/rec/share/AvcWtiSdEVz9DImAGCA30ZhHvEqbHMGEUbfNE5ztSk6rYnS_g8SqRPVOGKv7tjNp.0B8uXHDsU9nsTymr?from=hub
 
 ----
 ----
